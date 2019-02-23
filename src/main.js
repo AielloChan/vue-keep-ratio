@@ -1,5 +1,3 @@
-import Vue from "vue";
-
 const defaultConfig = {
   ratio: 1920 / 1080,
   adjust: "height",
@@ -18,17 +16,21 @@ function adjustSize(el, ratio, adjust) {
   }
 }
 
-Vue.directive("ratio", {
-  inserted: function(el, binding) {
-    const config = Object.assign(defaultConfig, binding.value);
-    const adjustSizeWapper = () => {
-      adjustSize(el, config.ratio, config.adjust);
-    };
-    adjustSizeWapper();
-    if (config.keep) {
-      window.addEventListener("resize", adjustSizeWapper);
-    } else {
-      window.removeEventListener("resize", adjustSizeWapper);
-    }
+export default {
+  install: function(Vue, options) {
+    Vue.directive("ratio", {
+      inserted: function(el, binding) {
+        const config = Object.assign(defaultConfig, binding.value);
+        function adjustSizeWapper() {
+          adjustSize(el, config.ratio, config.adjust);
+        }
+        adjustSizeWapper();
+        if (config.keep) {
+          window.addEventListener("resize", adjustSizeWapper);
+        } else {
+          window.removeEventListener("resize", adjustSizeWapper);
+        }
+      }
+    });
   }
-});
+};
