@@ -5,7 +5,7 @@
   "author": "Aiello Chan <Aiello.Chan@Gmail.com>",
   "license": "Apache-2.0",
   "private": false,
-  "main": "dist/keep-ratio.js",
+  "main": "dist/keep-ratio.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AielloChan/vue-keep-ratio.git"
