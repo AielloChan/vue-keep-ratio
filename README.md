@@ -6,11 +6,11 @@ It's a vue directive to keep dom ratio
 
 ## How to use
 
-*main.js*
+_main.js_
 
 ```js
-import KeepRatio from 'vue-keep-ratio'
-Vue.use(KeepRatio)
+import KeepRatio from "vue-keep-ratio";
+Vue.use(KeepRatio);
 ```
 
 ```HTML
@@ -20,6 +20,7 @@ Vue.use(KeepRatio)
   </div>
 </template>
 ```
+
 div `screen` will display as `width=1920px;height:1080px`
 
 Or
@@ -31,7 +32,16 @@ Or
   </div>
 </template>
 ```
+
 div `cube` will be a cube, and when browser resized, it still keep width/height = 1
+
+## Demo
+
+install [parcel](https://parceljs.org/)
+
+```bash
+parcel examples/base/index.html
+```
 
 ## API
 
