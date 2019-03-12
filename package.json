@@ -1,7 +1,7 @@
 {
   "name": "vue-keep-ratio",
   "description": "A vue directive to keep dom ratio",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Aiello Chan <Aiello.Chan@Gmail.com>",
   "license": "Apache-2.0",
   "private": false,

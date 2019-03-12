@@ -18,8 +18,6 @@ window.addEventListener("resize", () => {
 
 // modify dom obj size
 function adjustSize(el, ratio, fixed) {
-  console.log("adjust:", el);
-
   if (fixed === "width") {
     const width = el.offsetWidth;
     const height = width / ratio;
