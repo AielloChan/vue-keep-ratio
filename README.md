@@ -27,7 +27,7 @@ Or
 ```HTML
 <template>
   <div style="width: 500px">
-    <div id="cube" style="width: 100%" v-ratio="{ratio:1,adjust:'height',keep:true"></div>
+    <div id="cube" style="width: 100%" v-ratio="{ratio:1/1,fixed:'width',keep:true, debounce: 100}"></div>
   </div>
 </template>
 ```
@@ -36,5 +36,6 @@ div `cube` will be a cube, and when browser resized, it still keep width/height 
 ## API
 
 - **ratio**: The ratio you wanna keep, default 1920/1080
-- **adjust**: Witch attr(width/height) should change, default change height
+- **fixed**: Witch attr(width/height) should fixed, default change height
 - **keep**: If keep ratio when window resized
+- **debounce**: resize event debounce
