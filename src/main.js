@@ -18,15 +18,19 @@ window.addEventListener("resize", () => {
 
 // modify dom obj size
 function adjustSize(el, ratio, fixed) {
+  let width = 0,
+    height = 0;
   if (fixed === "width") {
-    const width = el.offsetWidth;
-    const height = width / ratio;
+    width = el.offsetWidth;
+    height = width / ratio;
     el.style.height = height + "px";
   } else {
-    const height = el.offsetHeight;
-    const width = height * ratio;
+    height = el.offsetHeight;
+    width = height * ratio;
     el.style.width = width + "px";
   }
+
+  return [width, height];
 }
 
 function update(el, binding, __, oldVnode) {
@@ -44,14 +48,16 @@ function update(el, binding, __, oldVnode) {
   if (!el.dataset.retioId) {
     el.dataset.retioId = idx++;
   }
-  adjustSize(el, config.ratio, config.fixed);
+  let widthHeight = adjustSize(el, config.ratio, config.fixed);
+  config.cb && config.cb(widthHeight);
 
   if (config.keep) {
     // add resize listen
     CallbackStore.set(
       el.dataset.retioId,
       Debounce(() => {
-        adjustSize(el, config.ratio, config.fixed);
+        widthHeight = adjustSize(el, config.ratio, config.fixed);
+        config.cb && config.cb(widthHeight);
       }, config.debounce)
     );
   } else {

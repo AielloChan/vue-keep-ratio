@@ -49,3 +49,4 @@ parcel examples/base/index.html
 - **fixed**: Witch attr(width/height) should fixed, default change height
 - **keep**: If keep ratio when window resized
 - **debounce**: resize event debounce
+- **cb**: resize event call back

@@ -12,7 +12,7 @@
     <h2 class="text-left">Fixed width (Try change window width)</h2>
     <div>
       <div class="fixed-width"
-           v-ratio="{ratio: 4 / 3}">
+           v-ratio="{ratio: 4 / 3,cb:afterResize}">
         <h2>Ratio: 4 / 3</h2>
       </div>
       <div class="fixed-width"
@@ -72,6 +72,11 @@ export default {
         this.showDynamic = false;
       }, 2e3);
     }, 2e3);
+  },
+  methods: {
+    afterResize(val) {
+      console.log("afterResize", val);
+    }
   }
 };
 </script>
