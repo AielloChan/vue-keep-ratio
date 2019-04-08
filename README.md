@@ -4,6 +4,8 @@
 
 It's a vue directive to keep dom ratio
 
+**Note: From 1.3.0 desktop chrome use `ResizeObserver` as default**
+
 ## How to use
 
 _main.js_
@@ -49,4 +51,4 @@ parcel examples/base/index.html
 - **fixed**: Witch attr(width/height) should fixed, default change height
 - **keep**: If keep ratio when window resized
 - **debounce**: resize event debounce
-- **cb**: resize event call back
+- **cb**: resize event call back (return [width,height])

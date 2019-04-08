@@ -1,5 +1,6 @@
 import Debounce from "lodash.debounce";
 import IsEqual from "lodash.isequal";
+import ResizeEventBus from "./resizeEventBus";
 
 const defaultConfig = {
   ratio: 1920 / 1080,
@@ -8,13 +9,7 @@ const defaultConfig = {
   debounce: 300
 };
 
-let idx = 0;
-const CallbackStore = new Map();
-window.addEventListener("resize", () => {
-  for (let cb of CallbackStore.values()) {
-    cb && cb();
-  }
-});
+const resizeEventBus = new ResizeEventBus();
 
 // modify dom obj size
 function adjustSize(el, ratio, fixed) {
@@ -29,7 +24,6 @@ function adjustSize(el, ratio, fixed) {
     width = height * ratio;
     el.style.width = width + "px";
   }
-
   return [width, height];
 }
 
@@ -44,24 +38,18 @@ function update(el, binding, __, oldVnode) {
 
   // init directive config
   const config = Object.assign({}, defaultConfig, binding.value);
-  // assign dom id
-  if (!el.dataset.retioId) {
-    el.dataset.retioId = idx++;
-  }
-  let widthHeight = adjustSize(el, config.ratio, config.fixed);
-  config.cb && config.cb(widthHeight);
 
   if (config.keep) {
     // add resize listen
-    CallbackStore.set(
-      el.dataset.retioId,
+    resizeEventBus.add(
+      el,
       Debounce(() => {
-        widthHeight = adjustSize(el, config.ratio, config.fixed);
+        const widthHeight = adjustSize(el, config.ratio, config.fixed);
         config.cb && config.cb(widthHeight);
       }, config.debounce)
     );
   } else {
-    CallbackStore.delete(el.dataset.retioId);
+    resizeEventBus.remove(el);
   }
 }
 
@@ -71,7 +59,7 @@ export default {
       inserted: update,
       update: update,
       unbind: function(el) {
-        CallbackStore.delete(el.dataset.retioId);
+        resizeEventBus.remove(el);
       }
     });
   }
