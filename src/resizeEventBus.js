@@ -1,9 +1,9 @@
 export default class ResizeEventBus {
-  useResizeObserver = false;
-  id = 0;
-  Store = new Map();
-
   constructor() {
+    this.useResizeObserver = false;
+    this.id = 0;
+    this.Store = new Map();
+
     if (typeof ResizeObserver === "undefined") {
       window.addEventListener("resize", () => {
         for (let cb of this.Store.values()) {
