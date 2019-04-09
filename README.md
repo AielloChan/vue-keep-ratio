@@ -52,3 +52,12 @@ parcel examples/base/index.html
 - **keep**: If keep ratio when window resized
 - **debounce**: resize event debounce
 - **cb**: resize event call back (return [width,height])
+
+
+## Bugs
+
+### Resize bouncing
+
+What: before rezise there is no scroll bar, after rezise has, it will cause a bouncing loop
+Why: cus we don't know if there will be a scroll bar after resize the dom obj
+Fix: set scroll type to `scroll`, `overflow-y: scroll;`
