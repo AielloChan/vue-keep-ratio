@@ -1,63 +1,43 @@
 # vue-keep-ratio
 
+_As there comes a new css attribute: [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio), I picked up my old work `vue-keep-ratio`, use a more adaptive (but hack) way to achieve `keep dom ratio`_ 🍺
+
 ## What
 
-It's a vue directive to keep dom ratio
-
-**Note: From 1.3.0 desktop chrome use `ResizeObserver` as default**
+It's a vue component to keep dom ratio
 
 ## How to use
 
-_main.js_
-
 ```js
-import KeepRatio from "vue-keep-ratio";
-Vue.use(KeepRatio);
+// main.js
+import VueKeepRatio from "vue-keep-ratio";
+Vue.use(VueKeepRatio);
 ```
 
-```HTML
+```vue
+// page.vue
 <template>
-  <div style="width: 1920px">
-    <div id="screen" style="width: 100%" v-ratio></div>
-  </div>
+  <VueKeepRatio :ratio="16 / 9">
+    this box is keep ratio as default 16 / 9
+  </VueKeepRatio>
 </template>
 ```
-
-div `screen` will display as `width=1920px;height:1080px`
-
-Or
-
-```HTML
-<template>
-  <div style="width: 500px">
-    <div id="cube" style="width: 100%" v-ratio="{ratio:1/1,fixed:'width',keep:true, debounce: 100}"></div>
-  </div>
-</template>
-```
-
-div `cube` will be a cube, and when browser resized, it still keep width/height = 1
 
 ## Demo
 
-install [parcel](https://parceljs.org/)
+use [vue cli](https://cli.vuejs.org/) start demo
 
 ```bash
-parcel examples/base/index.html
+vue serve examples/base/main.js
 ```
 
 ## API
 
-- **ratio**: The ratio you wanna keep, default 1920/1080
-- **fixed**: Witch attr(width/height) should fixed, default change height
-- **keep**: If keep ratio when window resized
-- **debounce**: resize event debounce
-- **cb**: resize event call back (return [width,height])
-
+**Props**
+- **ratio**: {Number} [ratio=1/1] The ratio you wanna keep, default: 1 / 1.
+- **width**: {String} [width='100%'] Keep width value when dom resized, default.
+- **height**: {String} [height=undefined] Keep width value when dom resized.
+- **innerClassName**: {String} [innerClassName=''] As the name, it specify inner div wrapper additional class name
 
 ## Bugs
-
-### Resize bouncing
-
-What: before rezise there is no scroll bar, after rezise has, it will cause a bouncing loop
-Why: cus we don't know if there will be a scroll bar after resize the dom obj
-Fix: set scroll type to `scroll`, `overflow-y: scroll;`
+- [ ]: Can't apply css `transition` animation on `VueKeepRatio`, because `transition` require affirmatory start and end value.
