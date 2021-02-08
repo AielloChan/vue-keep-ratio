@@ -32,8 +32,16 @@ _新的 CSS 属性 [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/C
 
 Demo: [试一试！](https://codepen.io/AielloChan/pen/GRNqJzd)
 
-## 如何使用
+## 安装使用
 
+```bash
+# npm
+npm -i vue-keep-ratio
+# yarn
+yarn add vue-keep-ratio
+```
+
+### 全局安装
 ```js
 // main.js
 import VueKeepRatio from "vue-keep-ratio";
@@ -47,6 +55,26 @@ Vue.use(VueKeepRatio);
     this box is keep ratio as default 16 / 9
   </VueKeepRatio>
 </template>
+```
+
+### 单文件组件中安装
+```vue
+// page.vue
+<template>
+  <VueKeepRatio :ratio="16 / 9">
+    this box is keep ratio as default 16 / 9
+  </VueKeepRatio>
+</template>
+
+<script>
+import VueKeepRatio from "vue-keep-ratio";
+
+export default {
+  components: {
+    VueKeepRatio
+  }
+}
+</script>
 ```
 
 ## Demo

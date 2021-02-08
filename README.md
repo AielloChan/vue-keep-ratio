@@ -32,8 +32,16 @@ It's a vue component to keep dom ratio. (just in CSS)
 
 Demo: [Try it!](https://codepen.io/AielloChan/pen/GRNqJzd)
 
-## How to use
+## Install
 
+```bash
+# npm
+npm -i vue-keep-ratio
+# yarn
+yarn add vue-keep-ratio
+```
+
+### Global install
 ```js
 // main.js
 import VueKeepRatio from "vue-keep-ratio";
@@ -47,6 +55,26 @@ Vue.use(VueKeepRatio);
     this box is keep ratio as default 16 / 9
   </VueKeepRatio>
 </template>
+```
+
+### Just in component
+```vue
+// page.vue
+<template>
+  <VueKeepRatio :ratio="16 / 9">
+    this box is keep ratio as default 16 / 9
+  </VueKeepRatio>
+</template>
+
+<script>
+import VueKeepRatio from "vue-keep-ratio";
+
+export default {
+  components: {
+    VueKeepRatio
+  }
+}
+</script>
 ```
 
 ## Demo
