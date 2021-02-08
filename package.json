@@ -1,13 +1,14 @@
 {
   "name": "vue-keep-ratio",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A vue directive to keep dom ratio",
   "author": "Aiello Chan <Aiello.Chan@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-keep-ratio.common.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "examples"
   ],
   "repository": {
     "type": "git",
