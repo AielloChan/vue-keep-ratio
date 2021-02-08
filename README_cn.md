@@ -22,17 +22,17 @@
   </a>
 </p>
 
-[[中文项目介绍](./README_cn.md)]
+[[English](./README.md)]
 
-_As there comes a new css attribute: [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio), I picked up my old work `vue-keep-ratio`, use a more adaptive (but hack) way to achieve `keep dom ratio`_ 🍺
+_新的 CSS 属性 [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio) 来了，但是兼容性不是很好，所以我又捡起了自己的老项目 `vue-keep-ratio`通过另一种兼容性更好的办法（hack）来实现`固定 DOM 长宽比`_ 🍺
 
-## What
+## 这是什么
 
-It's a vue component to keep dom ratio. (just in CSS)
+这是一个基于 Vue.js 的固定 DOM 长宽比的组件。（仅仅通过 CSS 实现）
 
-Demo: [Try it!](https://codepen.io/AielloChan/pen/GRNqJzd)
+Demo: [试一试！](https://codepen.io/AielloChan/pen/GRNqJzd)
 
-## How to use
+## 如何使用
 
 ```js
 // main.js
@@ -51,7 +51,7 @@ Vue.use(VueKeepRatio);
 
 ## Demo
 
-use [vue cli](https://cli.vuejs.org/) start demo
+使用 [vue cli](https://cli.vuejs.org/) 来在本地启动一个 Demo
 
 ```bash
 vue serve examples/base/main.js
@@ -60,10 +60,10 @@ vue serve examples/base/main.js
 ## API
 
 **Props**
-- **ratio**: {Number} [ratio=1/1] The ratio you wanna keep, default: 1 / 1.
-- **width**: {String} Keep width value when dom resized, default.
-- **height**: {String} Keep width value when dom resized.
-- **innerClassName**: {String} [innerClassName=''] As the name, it specify inner div wrapper additional class name
+- **ratio**: {Number} [ratio=1/1] 宽度和高度的比例，默认为 1 / 1。
+- **width**: {String} 当设置这个值时，默认在缩放时保持宽度不变，默认为此模式。
+- **height**: {String} 在缩放时，保持此高度不变。
+- **innerClassName**: {String} [innerClassName=''] 正如其名，他用于设置内部容器的类名。
 
-## Bugs
-- [ ]: Can't apply css `transition` animation on `VueKeepRatio`, because `transition` require affirmatory start and end value.
+## 已知缺陷
+- [ ]: 无法通过添加 `transition` 属性来使得 `VueKeepRatio` 的变化更平缓（也就是动画），因为 `transition` 属性要求动画开始和结束都是明确的数值，但我们是通过 100% 再到某一个值的，所以无法使用动画。
