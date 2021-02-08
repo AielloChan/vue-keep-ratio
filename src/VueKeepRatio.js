@@ -1,4 +1,3 @@
-<script>
 export default {
   name: "VueKeepRatio",
   props: {
@@ -67,4 +66,3 @@ export default {
     );
   },
 };
-</script>
