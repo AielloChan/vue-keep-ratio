@@ -1,4 +1,4 @@
-# vue-keep-ratio
+<h1 align="center">vue-keep-ratio</h1>
 
 <p align="center">
   <a href="https://cdnjs.com/libraries/vue-keep-ratio">
